@@ -1585,7 +1585,7 @@ class SphinxClient
             list($status, $ver, $len) = array_values(unpack('n2a/Nb', $header));
             $left = $len;
             while ($left > 0 && !feof($fp)) {
-                $chunk = fread($fp, min(8192, $left));
+                $chunk = fread($fp, min(16384, $left));
                 if ($chunk) {
                     $response .= $chunk;
                     $left -= strlen($chunk);
